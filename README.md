@@ -1,4 +1,4 @@
-In this repo you can find the code for reproducing results and figures from our paper "*Decoding the Microbiome-Metabolome Nexus: A Systematic Benchmark of Integrative Strategies*". We summarize important results and findings below. We also provide a complete tutorial in the Wiki section on how combining best methods to identify complementary biological processes on one real dataset. 
+In this repo you can find the code for reproducing results and figures from our paper "*Decoding the Microbiome-Metabolome Nexus: A Systematic Benchmark of Integrative Strategies*". We summarize important results and findings below. We also provide a complete tutorial in the Wiki section on combining the best methods to identify complementary biological processes in one real dataset. 
 
 
 ## Work Summary
