@@ -1,4 +1,4 @@
-In this repo you can find the code for reproducing results and figures from our paper "Decoding the Microbiome-Metabolome Nexus: A Systematic Benchmark of Integrative Strategies". We summarize important results and findings below. We also provide a complete tutorial in the Wiki section on how combining best methods to identify complementary biological processes on one real dataset. 
+In this repo you can find the code for reproducing results and figures from our paper "*Decoding the Microbiome-Metabolome Nexus: A Systematic Benchmark of Integrative Strategies*". We summarize important results and findings below. We also provide a complete tutorial in the Wiki section on how combining best methods to identify complementary biological processes on one real dataset. 
 
 
 ## Work Summary
@@ -44,8 +44,13 @@ Feature selection refers to the statistical practice of subsetting important fea
 
 ![figure_5 (1)](https://github.com/user-attachments/assets/f04ab27d-6e91-40da-9517-28f0d9b5c2c8)
 
-### Univariate
-### Multivariate
+
+
+*Important Findings*:
+- **Univariate**: CODA-LASSO is the best trade-off between sparsity and reliability to select the core species associated with individual metabolites. However the method is strongly impacted by the underlying data structure such as the proportion of zeros.
+- **Multivariate**: sPLS-Reg is the best method to identify core species when accounting for the between-omics correlation.
+
+
 
 ## Reproducibility 
 Data for the different methods benchmarked in the paper can be found at: https://doi.org/10.6084/m9.figshare.25234915. 
