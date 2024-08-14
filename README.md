@@ -1,4 +1,5 @@
-In this repo you can find the code for reproducing results and figures from our paper "Decoding the Microbiome-Metabolome Nexus: A Systematic Benchmark of Integrative Strategies".
+In this repo you can find the code for reproducing results and figures from our paper "Decoding the Microbiome-Metabolome Nexus: A Systematic Benchmark of Integrative Strategies". We summarize important results and findings below. We also provide a complete tutorial in the Wiki section on how combining best methods to identify complementary biological processes on one real dataset. 
+
 
 ## Work Summary
 In our work we compared 19 statistical methods across 3 synthetic datasets to identify the most promising methods across a variety of scientific questions, such as **global associations**, **data summarization**, **individual associations**, and **feature selection**. We illustrated best methods in a real-world data application for Konzo. Below we summarize the most important findings, providing practical guidelines for helping the community.
@@ -38,11 +39,19 @@ Unlike Global Associations, Individual Associations provide a measure of associa
 - Cautious is important, since systematic applications of individual associations may suffer from extreme running times and difficut interpretations.  
 
 ## Feature Selection 
+
+Feature selection refers to the statistical practice of subsetting important features associated with a variable. In our context, we leverage on two different strategies to select core species associated with metabolome: univariate and multivariate feature selection methods. We compared three different methods for the two strategies: CODA-LASSO, clr-LASSO and clr-MLASSO, and sCCA, sPLS-Can and sPLS-Reg, for univariate and multivariate approaches, respectively.
+
+![figure_5 (1)](https://github.com/user-attachments/assets/f04ab27d-6e91-40da-9517-28f0d9b5c2c8)
+
 ### Univariate
 ### Multivariate
+
+## Reproducibility 
 Data for the different methods benchmarked in the paper can be found at: https://doi.org/10.6084/m9.figshare.25234915. 
 Details on results and methods can be found at: https://doi.org/10.1101/2024.01.26.577441
-We provide a complete tutorial in the Wiki section on how combining best methods to identify complementary biological processes on one real dataset:
 
+## Contact
 
+Questions and comments should be adressed to: loic.mangnier@gmail.com
 
