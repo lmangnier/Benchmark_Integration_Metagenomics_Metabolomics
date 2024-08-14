@@ -22,8 +22,24 @@ Data Summarization refers to the process of recapitulating data variability acco
 
 ![Figure3_DS_github](https://github.com/user-attachments/assets/552bf666-d982-43f5-94b7-f31ae2dd7fde)
 
+*Important Findings*:
+- RDA captures most variability across latent factors, robust to microbiome normalizations.
+- Directionality is a key driver of method performance depending on the underlying data structure, particularly for regression-based approaches (PLS-Reg or RDA). 
 
+## Individual Associations
 
+Unlike Global Associations, Individual Associations provide a measure of association between one metabolite and one or more species. We exploited different strategies, for evaluating individual relationships: clr-lm, MiRKAT, Log-contrast and HALLA. Methods were compared against Spearman's or Pearson's correlations regarding on the Type-I error rate and power.
+
+![Rplot67](https://github.com/user-attachments/assets/ef0c8107-bc57-40fe-8b4c-7d4d82b4a5fe)
+
+*Important Findings*:
+- MiRKAT is the best method to study the impact of species on metabolite, providing a collective framework robust to data normalizations. Post-hoc analyses have to be applied for detecting the microbial drivers. clr-lm is our default choice is this case.
+- Unlike other methods MiRKAT is able to provide a framework to adjust for confounding.
+- Cautious is important, since systematic applications of individual associations may suffer from extreme running times and difficut interpretations.  
+
+## Feature Selection 
+### Univariate
+### Multivariate
 Data for the different methods benchmarked in the paper can be found at: https://doi.org/10.6084/m9.figshare.25234915. 
 Details on results and methods can be found at: https://doi.org/10.1101/2024.01.26.577441
 We provide a complete tutorial in the Wiki section on how combining best methods to identify complementary biological processes on one real dataset:
