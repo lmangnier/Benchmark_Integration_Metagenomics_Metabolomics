@@ -2,7 +2,21 @@ In this repo you can find the code for reproducing results and figures from our 
 
 
 ## Work Summary
+
 In our work we compared 19 statistical methods across 3 synthetic datasets to identify the most promising methods across a variety of scientific questions, such as **global associations**, **data summarization**, **individual associations**, and **feature selection**. Datasets considered exhibit various structures. We illustrated best methods in a real-world data application for Konzo. Below we summarize the most important findings, providing practical guidelines for helping the community.
+
+## Generating Synthetic Data
+
+To ensure unbiased comparisons, it required to generate synthetic data mimicking realistic structures for both microbiome and metabolome. To do so, we took advantage of the "Normal-to-Anything" (NorTA) framework which produces correlated data under arbitrary distributions. We selected three real metagenomics-metabolomics datasets exhbiting various complexity. Thus:
+- We first estimated sparse correlation matrices for species and metabolites across our three datasets using Spiec-Easi.
+- We then generated correlated Gaussian distributions where correlation matrices were estimated previously.
+- Gaussian distributions were converted into arbitrary count data where structures were induced from real datasets. Transformations were achieved through a copula-based approaches.
+- Realistic associations were induced varying both the number of associations and the strenght.
+
+Workflow was summarized below:
+
+![Figures_Benchmark (1)](https://github.com/user-attachments/assets/d0726573-c14f-4c94-ae30-380e8de62e37)
+
 
 ## Global Associations
 
