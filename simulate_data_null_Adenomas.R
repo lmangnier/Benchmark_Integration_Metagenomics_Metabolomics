@@ -7,7 +7,7 @@
 
 #list.parameters.Adenomas can be found in the input\Adenomas directory
 
-list.parameters.Adenomas = readRDS("C:\\Users\\loicm\\Documents\\Paper_Benchmark\\Benchmark_Integration_Metagenomics_Metabolomics\\input\\Adenomas\\list_parameters_Adenomas.RDS")
+list.parameters.Adenomas = readRDS("input\\Adenomas\\list_parameters_Adenomas.RDS")
 
 
 simulate.realistic.data.null.Adenomas = function(list.parameters, nrep=1000, nindiv=100, random.seed=1234){
