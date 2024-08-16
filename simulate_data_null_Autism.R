@@ -16,7 +16,7 @@ simulate.realistic.data.null.Autism = function(list.parameters, nrep=1000, nindi
   Cov.Metabolites.Autism = list.parameters$Cov_metabolites_Autism
     
   #Mean estimated by MLE 
-  Poisson.model.metabolites.Autism = list.parameters$lambda_metabolites
+  lambda.metabolites.Autism = list.parameters$lambda_metabolites
     
   #ZINB parameters estimated by MLE
   size.species.Autism = list.parameters$size_species
@@ -31,7 +31,7 @@ simulate.realistic.data.null.Autism = function(list.parameters, nrep=1000, nindi
     multi.norm = MASS::mvrnorm(nindiv, rep(0,ncol(Cov.species.Autism)), Cov.species.Autism)
     multi.norm1 = MASS::mvrnorm(nindiv, rep(0,ncol(Cov.Metabolites.Autism)), Cov.Metabolites.Autism)
       
-    simulated.metabolites = matrix(qpois(p = pnorm(multi.norm1), lambda=Poisson.model.metabolites.Autism), nrow=nindiv, ncol=ncol(Cov.Metabolites.Autism))
+    simulated.metabolites = matrix(qpois(p = pnorm(multi.norm1), lambda=lambda.metabolites.Autism), nrow=nindiv, ncol=ncol(Cov.Metabolites.Autism))
     simulated.microbiotes = matrix(VGAM::qzinegbin(p = pnorm(multi.norm), size = size.species.Autism, munb = mu.species.Autism  ,pstr0 =  prop.zeros.species.Autism), ncol=ncol(Cov.species.Autism),nrow=nindiv)
     
     colnames(simulated.metabolites) = paste0("Metabo", 1:ncol(simulated.metabolites))
