@@ -10,7 +10,7 @@
 list.parameters.Adenomas = readRDS("input\\Adenomas\\list_parameters_Adenomas.RDS")
 
 
-simulate.realistic.data.null.Adenomas = function(list.parameters, nrep=1000, nindiv=100, random.seed=1234){
+simulate.realistic.data.null.Adenomas = function(list.parameters, nrep=1000, nindiv=c(100,100), random.seed=1234){
   
   #Sparse correlation matrices estimated by Spiec-Easi
   Cov.species.Adenomas = list.parameters$Cov_species_Adenomas
@@ -29,10 +29,10 @@ simulate.realistic.data.null.Adenomas = function(list.parameters, nrep=1000, nin
   null.rep.Adenomas = lapply(1: nrep, function(rep){
     print(rep)
     
-    multi.norm = MASS::mvrnorm(nindiv, rep(0,ncol(Cov.species.Adenomas)), Cov.species.Adenomas)
-    simulated.metabolites = MASS::mvrnorm(nindiv, mean.model.metabolites.Adenomas, Cov.Metabolites.Adenomas)
+    multi.norm = MASS::mvrnorm(nindiv[1], rep(0,ncol(Cov.species.Adenomas)), Cov.species.Adenomas)
+    simulated.metabolites = MASS::mvrnorm(nindiv[2], mean.model.metabolites.Adenomas, Cov.Metabolites.Adenomas)
     
-    simulated.microbiotes = matrix(VGAM::qzinegbin(p = pnorm(multi.norm), size = size.species.Adenomas, munb = mu.species.Adenomas  ,pstr0 =  prop.zeros.species.Adenomas), ncol=ncol(Cov.species.Adenomas),nrow=nindiv)
+    simulated.microbiotes = matrix(VGAM::qzinegbin(p = pnorm(multi.norm), size = size.species.Adenomas, munb = mu.species.Adenomas  ,pstr0 =  prop.zeros.species.Adenomas), ncol=ncol(Cov.species.Adenomas),nrow=nindiv[1])
     
     colnames(simulated.metabolites) = paste0("Metabo", 1:ncol(simulated.metabolites))
     colnames(simulated.microbiotes) = paste0("Micro", 1:ncol(simulated.microbiotes))

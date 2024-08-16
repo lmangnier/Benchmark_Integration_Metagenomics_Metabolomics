@@ -7,10 +7,9 @@
 
 #list.parameters.Konzo can be found in the input\Konzo directory
 
-list.parameters.Konzo = readRDS("C:\\Users\\loicm\\Documents\\Paper_Benchmark\\Benchmark_Integration_Metagenomics_Metabolomics\\input\\Konzo\\list_parameters_Konzo.RDS")
+list.parameters.Konzo = readRDS("input\\Konzo\\list_parameters_Konzo.RDS")
 
-list.parameters.Konzo$lambda_metabolites
-simulate.realistic.data.null.Konzo = function(list.parameters, nrep=1000, nindiv=100, random.seed=1234){
+simulate.realistic.data.null.Konzo = function(list.parameters, nrep=1000, nindiv=c(100,100), random.seed=1234){
   
   #Sparse correlation matrices estimated by Spiec-Easi
   Cov.species.Konzo = list.parameters$Cov_species_Konzo
@@ -28,11 +27,11 @@ simulate.realistic.data.null.Konzo = function(list.parameters, nrep=1000, nindiv
   null.rep.Konzo = lapply(1: nrep, function(rep){
     print(rep)
     
-    multi.norm = MASS::mvrnorm(nindiv, rep(0,ncol(Cov.species.Konzo)), Cov.species.Konzo)
-    multi.norm1 = MASS::mvrnorm(nindiv, rep(0,ncol(Cov.Metabolites.Konzo)), Cov.Metabolites.Konzo)
+    multi.norm = MASS::mvrnorm(nindiv[1], rep(0,ncol(Cov.species.Konzo)), Cov.species.Konzo)
+    multi.norm1 = MASS::mvrnorm(nindiv[2], rep(0,ncol(Cov.Metabolites.Konzo)), Cov.Metabolites.Konzo)
     
-    simulated.microbiotes = matrix(qnbinom(p = pnorm(multi.norm), size = size.species.Konzo, mu = mu.species.Konzo), ncol=ncol(Cov.species.Konzo),nrow=nindiv)
-    simulated.metabolites = matrix(qpois(p = pnorm(multi.norm1), lambda = lambda.metabolites.Konzo), ncol=ncol(Cov.Metabolites.Konzo),nrow=nindiv)
+    simulated.microbiotes = matrix(qnbinom(p = pnorm(multi.norm), size = size.species.Konzo, mu = mu.species.Konzo), ncol=ncol(Cov.species.Konzo),nrow=nindiv[1])
+    simulated.metabolites = matrix(qpois(p = pnorm(multi.norm1), lambda = lambda.metabolites.Konzo), ncol=ncol(Cov.Metabolites.Konzo),nrow=nindiv[2])
     
     colnames(simulated.metabolites) = paste0("Metabo", 1:ncol(simulated.metabolites))
     colnames(simulated.microbiotes) = paste0("Micro", 1:ncol(simulated.microbiotes))
