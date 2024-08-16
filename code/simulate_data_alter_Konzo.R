@@ -1,4 +1,4 @@
-#This function simulates data based under the null for our Konzo Scenario
+#This function simulates data based under the alternative for our Konzo Scenario
 
 #scenario == Konzo: list.parameters should have 5 elements
 #2 sparse correlation matrices
@@ -29,8 +29,8 @@ simulate.realistic.data.alter.Konzo = function(list.parameters, nrep=1000, nindi
   alter.rep.Konzo = lapply(1: nrep, function(rep){
     print(rep)
     
-    M1 = mvrnorm(nindiv[1], rep(0,ncol(Cov.Species.Konzo)), Cov.Species.Konzo)
-    M2 = mvrnorm(nindiv[2], rep(0,ncol(Cov.Metabolites.Konzo)), Cov.Metabolites.Konzo)
+    M1 = MASS::mvrnorm(nindiv[1], rep(0,ncol(Cov.Species.Konzo)), Cov.Species.Konzo)
+    M2 = MASS::mvrnorm(nindiv[2], rep(0,ncol(Cov.Metabolites.Konzo)), Cov.Metabolites.Konzo)
     
     
     prop.associated.metabolites = round(runif(1,0.01,0.1),2)
@@ -76,6 +76,9 @@ simulate.realistic.data.alter.Konzo = function(list.parameters, nrep=1000, nindi
     
     simulated.metabolites[, index.impacted.metabolites] = generate.assos.metabolites
     simulated.microbiotes[, index.impacted.species] = generate.assos.species
+    
+    colnames(simulated.microbiotes) = paste0("Micro", 1:ncol(simulated.microbiotes))
+    colnames(simulated.metabolites) = paste0("Metabo", 1:ncol(simulated.metabolites))
     
     list("Simulated.Microbiotes"=simulated.microbiotes,"Simulated.Metabolites"=simulated.metabolites, "index.associated.species"=index.associated.species, "index.associated.metabolites"=index.associated.metabolites, "index.impacted.species"=index.impacted.species, "index.impacted.metabolites"=index.impacted.metabolites, "associations.metabolites"=vb, "associations.species"=vn)
     })
