@@ -33,7 +33,10 @@ simulate.realistic.data.null.Autism = function(list.parameters, nrep=1000, nindi
       
     simulated.metabolites = matrix(qpois(p = pnorm(multi.norm1), lambda=Poisson.model.metabolites.Autism), nrow=nindiv, ncol=ncol(Cov.Metabolites.Autism))
     simulated.microbiotes = matrix(VGAM::qzinegbin(p = pnorm(multi.norm), size = size.species.Autism, munb = mu.species.Autism  ,pstr0 =  prop.zeros.species.Autism), ncol=ncol(Cov.species.Autism),nrow=nindiv)
-      
+    
+    colnames(simulated.metabolites) = paste0("Metabo", 1:ncol(simulated.metabolites))
+    colnames(simulated.microbiotes) = paste0("Micro", 1:ncol(simulated.microbiotes))
+    
     list("Simulated.Microbiotes"=simulated.microbiotes,"Simulated.Metabolites"=simulated.metabolites)
       
   })
