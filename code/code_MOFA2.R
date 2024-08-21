@@ -20,7 +20,7 @@ results.MOFA2 = lapply(1:length(data), function(rep) {
 	print(rep)
 
 	species = data[[rep]]$Simulated.Microbiotes
-        metabolites = data[[rep]]$Simulated.Metabolites
+        metabolites = data[[rep]]$Simulated.Metabolites #should be log-transformed
         
 	species = data[[rep]]$Simulated.Microbiotes
         metabolites = data[[rep]]$Simulated.Metabolites
