@@ -16,7 +16,7 @@ apply_nzv_filter <- function(x, freqCut = 95/5, uniqueCut = 10){
 
 
 
-results.MOFA2 = lapply(1:1000, function(rep) {
+results.MOFA2 = lapply(1:length(data), function(rep) {
 	print(rep)
 
 	species = data[[rep]]$Simulated.Microbiotes
@@ -54,4 +54,4 @@ results.MOFA2 = lapply(1:1000, function(rep) {
 
 })
 
-saveRDS(results.MOFA2, paste0("MOFA2_",microbiome.norm,"_Adenomas.RDS"))
+saveRDS(results.MOFA2, paste0("MOFA2_",microbiome.norm,".RDS"))
